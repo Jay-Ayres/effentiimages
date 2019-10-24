@@ -11,19 +11,26 @@ routes.post("/posts", multer(multerConfig).single('file'), async (req, res) => {
   console.log(req.file)
   //desestruturando
   try {
-    const { originalname: name, size, filename: key } = req.file
+    const { originalname: name, size, key, location: url = "" } = req.file
 
     const post = await Post.create({
-      name: 'teste',
-      size: 2,
-      key: 'teset',
-      url: ''
+      name,
+      size,
+      key,
+      url
     })
+    console.log(post)
+    return res.json(post)
   } catch (error) {
     console.log(error)
   }
 
-  return res.json(post)
+})
+
+routes.get("/posts/:id", async (req, res) => {
+  const posts = await Post.findById(req.params.id);
+
+  return res.json(posts)
 })
 
 
