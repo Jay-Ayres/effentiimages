@@ -1,7 +1,7 @@
 const mongoose = require('mongoose')
 const aws = require('aws-sdk')
-]
-const s3 = new aws.s3()
+
+const s3 = new aws.S3()
 
 const PostSchema = new mongoose.Schema({
   name: String,
