@@ -28,7 +28,12 @@ const storageTypes = {
     key: (req, file, cb) => {
       crypto.randomBytes(16, (error, hash) => {
         if (error) cb(error);
-
+        console.log("logando req - inicio");
+        console.log(req);
+        console.log("logando req - fim");
+        console.log("logando file - inicio");
+        console.log(file);
+        console.log("logando file - fim");
         const fileName = `${hash.toString("hex")}-${file.originalname}`;
 
         cb(null, fileName);
