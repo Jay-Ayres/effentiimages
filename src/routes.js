@@ -11,6 +11,11 @@ routes.post("/posts", multer(multerConfig).single("file"), async (req, res) => {
   console.log("logando a requisicao");
   console.log(req);
   console.log("logando a requisicao - fim");
+
+  console.log("logando body da requisicao");
+  console.log(req.body);
+  console.log("logando body da requisicao - fim");
+
   //desestruturando
   try {
     const { originalname: name, size, key, location: url = "" } = req.file;
@@ -21,10 +26,10 @@ routes.post("/posts", multer(multerConfig).single("file"), async (req, res) => {
       key,
       url
     });
-    console.log(post);
+    //console.log(post);
     return res.json(post);
   } catch (error) {
-    console.log(error);
+    // console.log(error);
   }
 });
 
